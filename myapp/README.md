@@ -1,70 +1,31 @@
-# Getting Started with Create React App
+# React项目
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 将进酒
 
-## Available Scripts
+### 【唐】 李白
 
-In the project directory, you can run:
+    君不见黄河之水天上来，奔流到海不复回。
 
-### `npm start`
+    君不见高堂明镜悲白发，朝如青丝暮成雪。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    人生得意须尽欢，莫使金樽空对月。
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    天生我材必有用，千金散尽还复来。
 
-### `npm test`
+    烹羊宰牛且为乐，会须一饮三百杯。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    岑夫子，丹丘生，将进酒，杯莫停。
 
-### `npm run build`
+    与君歌一曲，请君为我倾耳听。
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    钟鼓馔玉不足贵，但愿长醉不复醒。
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    古来圣贤皆寂寞，惟有饮者留其名。
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    陈王昔时宴平乐，斗酒十千恣欢谑。
 
-### `npm run eject`
+    主人何为言少钱，径须沽取对君酌。
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    五花马，千金裘，呼儿将出换美酒，
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    与尔同销万古愁。
