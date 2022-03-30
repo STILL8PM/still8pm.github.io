@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { Menu } from 'antd';
+import { HomeOutlined, UserOutlined, FolderOutlined } from '@ant-design/icons';
+import './App.css'
+import Logo from './logo.png';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends React.Component {
+
+  render() {
+    return (
+      <div className='header'>
+        <img className='logo' src={Logo} alt="logo" />
+        <Menu mode="horizontal">
+          <Menu.Item key="mail" icon={<HomeOutlined />}>
+            首页
+          </Menu.Item>
+          <Menu.Item key="Vue" icon={<FolderOutlined />}>
+            Vue文档
+          </Menu.Item>
+          <Menu.Item key="React" icon={<FolderOutlined />}>
+            React文档
+          </Menu.Item>
+          <Menu.Item key="other" icon={<FolderOutlined />}>
+            其他文档
+          </Menu.Item>
+          <Menu.Item key="about" icon={<UserOutlined />}>
+            个人信息
+          </Menu.Item>
+        </Menu>
+      </div>
+    );
+  }
 }
-
-export default App;
