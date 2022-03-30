@@ -1,23 +1,33 @@
 import React from 'react';
+
 import { Menu } from 'antd';
 import { HomeOutlined, UserOutlined, FolderOutlined } from '@ant-design/icons';
 import './App.css'
 import Logo from './logo.png';
 
-export default class App extends React.Component {
 
+export default class App extends React.Component {
+  state = {
+    url: 'mail',
+  };
+
+  handleClick = e => {
+    console.log('click ', e);
+    this.setState({ url: e.key });
+  };
   render() {
+    const{url}=this.state
     return (
       <div className='header'>
         <img className='logo' src={Logo} alt="logo" />
-        <Menu mode="horizontal">
-          <Menu.Item key="mail" icon={<HomeOutlined />}>
+        <Menu onClick={this.handleClick} mode="horizontal" selectedKeys={[url]} >
+          <Menu.Item key="home" icon={<HomeOutlined />}>
             首页
           </Menu.Item>
-          <Menu.Item key="Vue" icon={<FolderOutlined />}>
+          <Menu.Item key="vued" icon={<FolderOutlined />}>
             Vue文档
           </Menu.Item>
-          <Menu.Item key="React" icon={<FolderOutlined />}>
+          <Menu.Item key="reactd" icon={<FolderOutlined />}>
             React文档
           </Menu.Item>
           <Menu.Item key="other" icon={<FolderOutlined />}>
