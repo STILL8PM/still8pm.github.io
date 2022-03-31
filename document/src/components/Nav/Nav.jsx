@@ -1,38 +1,37 @@
 import React from 'react';
+import { Link } from "react-router-dom"
+import Darkreader from 'react-darkreader';
+
 import { Menu } from 'antd';
 import { HomeOutlined, UserOutlined, FolderOutlined } from '@ant-design/icons';
 import './Nav.css'
 import Logo from '../../logo.png';
 
 export default class Nav extends React.Component {
-  state = {
-    url: 'mail',
-  };
-
-  handleClick = e => {
-    console.log('click ', e);
-    this.setState({ url: e.key });
-  };
+  
   render() {
-    const{url}=this.state
+
     return (
       <div className='header'>
-        <img className='logo' src={Logo} alt="logo" />
-        <Menu onClick={this.handleClick} mode="horizontal" selectedKeys={[url]} >
+        <div className='imgdiv'>
+          <img className='logo' src={Logo} alt="logo" />
+        </div>
+        <Darkreader />
+        <Menu mode="horizontal"  >
           <Menu.Item key="home" icon={<HomeOutlined />}>
-            首页
+            <Link to="/">首页</Link>
           </Menu.Item>
           <Menu.Item key="vued" icon={<FolderOutlined />}>
-            Vue文档
+            <Link to="vued">Vue文档</Link>
           </Menu.Item>
           <Menu.Item key="reactd" icon={<FolderOutlined />}>
-            React文档
+            <Link to="reactd">React文档</Link>
           </Menu.Item>
           <Menu.Item key="other" icon={<FolderOutlined />}>
-            其他文档
+            <Link to="other">其他文档</Link>
           </Menu.Item>
           <Menu.Item key="about" icon={<UserOutlined />}>
-            个人信息
+            <Link to="about">个人信息</Link>
           </Menu.Item>
         </Menu>
       </div>

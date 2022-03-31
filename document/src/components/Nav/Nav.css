@@ -4,8 +4,9 @@
 }
 
 body {
-    margin: 2px;
-    padding: 5px;
+    margin: 0px 2px; 
+    padding:0px 5px;
+
     background-color: rgb(248, 244, 244);
 
 }
@@ -17,6 +18,7 @@ body {
     background-color: white;
     display: flex;
     justify-content: space-between;
+
 }
 
 .ant-menu,
@@ -25,9 +27,18 @@ body {
     background-color: white !important;
 }
 
+.imgdiv{
+    flex-grow: 1;
+}
 .logo {
     float: left;
     margin-left: 10px;
     height: 46px;
     font-size: 30px;
+}
+
+.react-switch.react-switch-docusaurus{
+    flex-grow: 0;
+    height: 24px;
+    margin: 15px 20px 5px 20px;
 }
