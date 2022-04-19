@@ -1,23 +1,21 @@
-import React from 'react';
-import { Link } from "react-router-dom"
-import Darkreader from 'react-darkreader';
+import React from "react";
+import { Link } from "react-router-dom";
+import Darkreader from "react-darkreader";
 
-import { Menu } from 'antd';
-import { HomeOutlined, UserOutlined, FolderOutlined } from '@ant-design/icons';
-import './Nav.css'
-import Logo from '../../logo.png';
+import { Menu } from "antd";
+import { HomeOutlined, UserOutlined, FolderOutlined } from "@ant-design/icons";
+import "./Nav.css";
+import Logo from "../../logo.png";
 
 export default class Nav extends React.Component {
-  
   render() {
-
     return (
-      <div className='header'>
-        <div className='imgdiv'>
-          <img className='logo' src={Logo} alt="logo" />
+      <div className="header">
+        <div className="imgdiv">
+          <img className="logo" src={Logo} alt="logo" />
         </div>
         <Darkreader />
-        <Menu mode="horizontal"  >
+        <Menu mode="horizontal">
           <Menu.Item key="home" icon={<HomeOutlined />}>
             <Link to="/">首页</Link>
           </Menu.Item>

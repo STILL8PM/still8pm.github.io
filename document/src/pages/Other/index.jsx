@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Other extends Component {
-    render() {
-        return (
-            <div>Other</div>
-        )
-    }
+export default function index() {
+  return (
+    <div>index</div>
+  )
 }
+
