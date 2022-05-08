@@ -8,14 +8,33 @@ import "./Nav.css";
 import Logo from "../../logo.png";
 
 export default class Nav extends React.Component {
+
+  state = {
+    current: true
+  };
+
+  componentDidMount() {
+    //判断是否手机端访问
+    //判断设备是不是移动端
+    const userAgent = navigator.userAgent;
+    if (userAgent.match(/(iPhone|iPod|Android|ios|iPad|AppleWebKit.*Mobile.*)/i)){
+      console.log('移动端')
+      this.setState({current:false})
+    }else {
+      console.log('PC端')
+      this.setState({current:true})
+    }
+  }
+
   render() {
+    const { current } = this.state;
     return (
       <div className="header">
         <div className="imgdiv">
           <img className="logo" src={Logo} alt="logo" />
         </div>
         <Darkreader />
-        <Menu mode="horizontal">
+        <Menu mode="horizontal" disabledOverflow={current}>
           <Menu.Item key="home" icon={<HomeOutlined />}>
             <Link to="/">首页</Link>
           </Menu.Item>
