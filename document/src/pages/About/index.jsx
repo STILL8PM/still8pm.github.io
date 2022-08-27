@@ -15,12 +15,12 @@ const About = () => {
     temp = null;
     return output;
   }
-  useEffect(() => {
-    axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
-      console.log(res.data);
-      setNode(HTMLDecode(res.data));
-    });
-  }, []);
+  // useEffect(() => {
+  //   axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
+  //     console.log(res.data);
+  //     setNode(HTMLDecode(res.data));
+  //   });
+  // }, []);
 
   return (
     <div
@@ -31,7 +31,7 @@ const About = () => {
         textAlign: "center",
       }}
     >
-      {node}
+      {/* {node} */}
     </div>
   );
 };
