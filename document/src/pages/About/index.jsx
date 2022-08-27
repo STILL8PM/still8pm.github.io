@@ -3,7 +3,7 @@ import axios from "axios";
 // import config from "../../components/config";
 const About = () => {
   const devUrl = "/api";
-  const productionUrl = "https://v.api.aa1.cn";
+  const productionUrl = "https://v.api.aa1.cn/api";
   const [node, setNode] = useState(null);
   let baseUrl = process.env.NODE_ENV === "production" ? productionUrl : devUrl;
 
