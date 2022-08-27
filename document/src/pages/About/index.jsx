@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
+import config from "../../components/config";
 const About = () => {
   const [node, setNode] = useState(null);
 
@@ -11,9 +12,8 @@ const About = () => {
     return output;
   }
   useEffect(() => {
-    axios.get("/api/yiyan/index.php", {}).then((res) => {
+    axios.get(`${config.baseUrl}/yiyan/index.php`, {}).then((res) => {
       console.log(res.data);
-
       setNode(HTMLDecode(res.data));
     });
   }, []);
