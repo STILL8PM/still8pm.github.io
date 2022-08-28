@@ -11,15 +11,16 @@ body {
 }
 
 .header {
-  display: flex;
   width: 100%;
+  display: flex;
+  padding: auto 10px;
   height: 45px;
   background-color: white;
   justify-content: space-between;
 }
 .menu {
   margin-left: auto;
-  width: 600px;
+
 }
 .ant-menu,
 .ant-menu-sub,

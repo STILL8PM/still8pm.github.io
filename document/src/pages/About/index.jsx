@@ -1,11 +1,9 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import config from "../../components/config";
 const About = () => {
   const devUrl = "/api";
   const productionUrl = "https://v.api.aa1.cn/api";
   const [node, setNode] = useState(undefined);
-  let baseUrl = process.env.NODE_ENV === "production" ? productionUrl : devUrl;
 
   function HTMLDecode(text) {
     var temp = document.createElement("div");
@@ -15,6 +13,8 @@ const About = () => {
     return output;
   }
   useEffect(() => {
+    let baseUrl =
+      process.env.NODE_ENV === "production" ? productionUrl : devUrl;
     axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
       console.log(res.data);
       setNode(HTMLDecode(res.data));
