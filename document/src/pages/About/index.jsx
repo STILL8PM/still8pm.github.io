@@ -4,9 +4,8 @@ import axios from "axios";
 const About = () => {
   const devUrl = "/api";
   const productionUrl = "https://v.api.aa1.cn/api";
-  const [node, setNode] = useState(null);
+  const [node, setNode] = useState(undefined);
   let baseUrl = process.env.NODE_ENV === "production" ? productionUrl : devUrl;
-
 
   function HTMLDecode(text) {
     var temp = document.createElement("div");
@@ -15,12 +14,12 @@ const About = () => {
     temp = null;
     return output;
   }
-  // useEffect(() => {
-  //   axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
-  //     console.log(res.data);
-  //     setNode(HTMLDecode(res.data));
-  //   });
-  // }, []);
+  useEffect(() => {
+    axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
+      console.log(res.data);
+      setNode(HTMLDecode(res.data));
+    });
+  }, []);
 
   return (
     <div
@@ -31,7 +30,7 @@ const About = () => {
         textAlign: "center",
       }}
     >
-      {/* {node} */}
+      {node ? node : "你之所在，便是我心归处。"}
     </div>
   );
 };

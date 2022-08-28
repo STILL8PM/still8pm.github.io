@@ -11,7 +11,7 @@ const Vued = () => {
                         src="https://react.html.cn/docs/getting-started.html"
                         height="780"
                         width="100%"
-                        frameborder="0"
+                        
                         scrolling="0"
                         title="vue"
                     ></iframe>

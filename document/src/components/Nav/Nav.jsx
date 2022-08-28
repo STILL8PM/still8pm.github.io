@@ -39,20 +39,7 @@ export default class Nav extends React.Component {
     ],
   };
 
-  componentDidMount() {
-    //判断是否手机端访问
-    //判断设备是不是移动端
-    const userAgent = navigator.userAgent;
-    if (
-      userAgent.match(/(iPhone|iPod|Android|ios|iPad|AppleWebKit.*Mobile.*)/i)
-    ) {
-      console.log("移动端");
-      this.setState({ current: false });
-    } else {
-      console.log("PC端");
-      this.setState({ current: true });
-    }
-  }
+
   onClick = (e) => {
     console.log("click ", e);
     this.setState({ current: e.key });
@@ -68,11 +55,10 @@ export default class Nav extends React.Component {
         <Darkreader />
         <Menu
           className="menu"
-          inlineCollapsed={false}
-          onClick={() => {
-            this.onClick();
+          onClick={(e) => {
+            this.onClick(e);
           }}
-          selectedKeys={[current]}
+          selectedKeys={[...current]}
           mode="horizontal"
           items={items}
         />

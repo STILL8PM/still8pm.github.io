@@ -10,8 +10,7 @@ const Vued = () => {
             <iframe
               src="https://cn.vuejs.org/v2/guide/"
               height="780"
-              width="100%"
-              frameborder="0"
+              width="100%"              
               scrolling="0"
               title="vue"
             ></iframe>
