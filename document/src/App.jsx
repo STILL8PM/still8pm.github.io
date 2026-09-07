@@ -1,44 +1,25 @@
-import React, { Component } from "react";
-import { Routes, Route, HashRouter } from "react-router-dom";
-
-import Home from "./pages/Home";
-import Vued from "./pages/Vued";
-import Reactd from "./pages/Reactd";
-import Other from "./pages/Other";
-import About from "./pages/About";
-import Workbench from "./pages/Workbench";
-import { WorkbenchProvider } from "./工作台/工作台上下文";
-
-import { Layout } from "antd";
-import Nav from "./components/Nav/Nav.jsx";
+import React from "react";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+import Admin from "./pages/Admin";
+import { WorkbenchProvider } from "./context/WorkbenchContext";
 import "./App.css";
-const { Header, Footer, Content } = Layout;
 
-export default class App extends Component {
-  render() {
-    return (
-      <HashRouter>
-        <WorkbenchProvider>
-          <Layout>
-            <Header className="header">
-              <Nav />
-            </Header>
-            <Content className="content">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="workbench" element={<Workbench />} />
-                <Route path="vued" element={<Vued />} />
-                <Route path="reactd" element={<Reactd />} />
-                <Route path="other" element={<Other />} />
-                <Route path="about" element={<About />} />
-              </Routes>
-            </Content>
-            <Footer className="footer">
-              MIT Licensed | Copyright © 2022 still8pm.github.io
-            </Footer>
-          </Layout>
-        </WorkbenchProvider>
-      </HashRouter>
-    );
-  }
+/**
+ * Application shell for the administration-first workbench.
+ *
+ * HashRouter is required by the current GitHub Pages deployment because the
+ * static host cannot provide server-side route fallback for nested URLs.
+ */
+export default function App() {
+  return (
+    <HashRouter>
+      <WorkbenchProvider>
+        <Routes>
+          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/admin/*" element={<Admin />} />
+          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+        </Routes>
+      </WorkbenchProvider>
+    </HashRouter>
+  );
 }

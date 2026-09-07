@@ -87,7 +87,7 @@ Secret 等敏感信息必须由 Serverless 后端保存，禁止写入前端代�
 ## 修改项目前
 
 请先阅读 [`docs/README.md`](./docs/README.md)，再根据任务读取对应文档。页面
-不能直接调用 GitHub API，必须通过 `document/src/公共/` 下的公共服务访问后台。
+不能直接调用 GitHub API，必须通过 `document/src/services/` 下的公共服务访问后台。
 
 新增页面、公共方法、接口或数据字段时，需要同步更新 `docs/` 中的相关说明。
 
