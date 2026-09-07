@@ -1,0 +1,55 @@
+.workbench-page {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.workbench-hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.workbench-hero h1 {
+  margin: 0.75rem 0 0.5rem;
+  color: #1f2937;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.2;
+}
+
+.workbench-hero p {
+  margin: 0;
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+.workbench-cards {
+  margin-top: 1.5rem;
+}
+
+.status-value {
+  color: #111827;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.status-description {
+  min-height: 3rem;
+  margin: 0.75rem 0 0;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+@media (max-width: 640px) {
+  .workbench-hero {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .workbench-hero .ant-btn {
+    align-self: flex-start;
+  }
+}
+

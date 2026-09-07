@@ -14,7 +14,7 @@ const About = () => {
   }
   useEffect(() => {
     let baseUrl =
-      process.env.NODE_ENV === "production" ? productionUrl : devUrl;
+      import.meta.env.PROD ? productionUrl : devUrl;
     axios.get(`${baseUrl}/yiyan/index.php`, {}).then((res) => {
       console.log(res.data);
       setNode(HTMLDecode(res.data));
