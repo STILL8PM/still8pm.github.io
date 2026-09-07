@@ -65,6 +65,11 @@ npm run preview
 npm run deploy
 ```
 
+```bash
+cd document
+npm run release -- "feat: update workbench"
+```
+
 构建输出目录为 `document/build/`，部署命令会将构建结果发布到 `gh-pages`
 分支。路由使用 Hash 模式，GitHub Pages 刷新工作台子页面不会产生服务端
 路由 404。

@@ -16,6 +16,16 @@ export function createAuthService({ baseUrl = appConfig.apiBaseUrl } = {}) {
   };
 
   return {
+    /** Submit account credentials to the backend-managed session endpoint. */
+    async login(request, credentials) {
+      return request.post("/api/auth/login", credentials);
+    },
+
+    /** Create an account without persisting its password in browser storage. */
+    async register(request, account) {
+      return request.post("/api/auth/register", account);
+    },
+
     /** Start the backend-managed GitHub login flow. */
     startLogin() {
       window.location.assign(buildUrl("/api/auth/github?mode=login"));

@@ -1,6 +1,8 @@
 import React from "react";
 import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import Admin from "./pages/Admin";
+import Login from "./pages/Auth/Login";
+import Register from "./pages/Auth/Register";
 import { WorkbenchProvider } from "./context/WorkbenchContext";
 import "./App.css";
 
@@ -15,9 +17,11 @@ export default function App() {
     <HashRouter>
       <WorkbenchProvider>
         <Routes>
-          <Route path="/" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/admin/*" element={<Admin />} />
-          <Route path="*" element={<Navigate to="/admin/dashboard" replace />} />
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </WorkbenchProvider>
     </HashRouter>
