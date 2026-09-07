@@ -1,13 +1,13 @@
 # 之一的工作台
 
 这是 `STILL8PM/still8pm.github.io` 项目的前端工作台。项目使用 React 18 和
-Vite 构建，部署到 GitHub Pages，并预留 Serverless 后端用于安全访问 GitHub
-数据。
+Vite 构建，部署到 GitHub Pages，并预留 Serverless 后端用于安全访问可配置的
+GitHub 或坚果云 WebDAV 数据。
 
 ## 项目地址
 
 - GitHub 仓库：`STILL8PM/still8pm.github.io`
-- 工作台入口：`/#/workbench`
+- 后台管理入口：`/#/admin/dashboard`
 - 发布方式：GitHub Pages 的 `gh-pages` 分支
 
 ## 技术栈
@@ -79,6 +79,7 @@ VITE_GITHUB_REPOSITORY_OWNER=STILL8PM
 VITE_GITHUB_REPOSITORY_NAME=still8pm.github.io
 VITE_GITHUB_REPOSITORY_BRANCH=main
 VITE_GITHUB_DATA_ROOT=data
+VITE_STORAGE_PROVIDER=github
 ```
 
 `VITE_` 变量会进入前端构建产物，只能放公开配置。GitHub Token、OAuth
@@ -87,13 +88,23 @@ Secret 等敏感信息必须由 Serverless 后端保存，禁止写入前端代�
 ## 修改项目前
 
 请先阅读 [`docs/README.md`](./docs/README.md)，再根据任务读取对应文档。页面
-不能直接调用 GitHub API，必须通过 `document/src/services/` 下的公共服务访问后台。
+不能直接调用 GitHub API 或坚果云 WebDAV，必须通过 `document/src/services/` 下的
+公共服务访问后台。
 
 新增页面、公共方法、接口或数据字段时，需要同步更新 `docs/` 中的相关说明。
 
 ## 当前状态
 
 - Vite + React 前端框架已完成。
-- “之一的工作台”基础页面已完成。
-- GitHub 数据源、认证服务和接口约定已预留。
-- Serverless 后端、GitHub OAuth 和真实 GitHub 读写待后续实现。
+- 后台仪表盘、模块功能树、用户、角色、分组、权限、审计和设置页面已完成。
+- 模块和功能支持独立控制前台显示，隐藏模块会统一隐藏其子功能。
+- 后台本地模式支持完整 CRUD、自动审计、JSON 导入导出和刷新持久化。
+- 通用 GitHub/WebDAV 存储服务、认证服务和接口约定已预留。
+- Serverless 后端、认证和真实 GitHub/WebDAV 读写待后续实现。
+
+## 开发规范
+
+- 代码风格遵循 ESLint。
+- 代码注释使用中文。
+- 代码提交使用 Git，遵循 [Conventional Commits](https://www.conventionalcommits.org/) 规范。
+- 代码提交信息使用中文。

@@ -2,13 +2,14 @@ import { appConfig } from "../config/environment";
 import { createRequestClient } from "./requestClient";
 
 /**
- * API adapter for workbench data.
+ * Provider-neutral storage adapter.
  *
- * Pages depend on these stable methods instead of GitHub Contents API details.
- * The backend can later switch between GitHub App, OAuth or another storage
- * implementation without changing the page layer.
+ * The frontend talks to one backend contract while the backend selects GitHub
+ * Contents API or Nutstore WebDAV. This keeps provider credentials and protocol
+ * details out of the browser and allows the administrator to change storage
+ * without rewriting feature pages.
  */
-export class WorkbenchDataSource {
+export class StorageService {
   constructor({ request, config = appConfig } = {}) {
     this.request = request || createRequestClient({ baseUrl: config.apiBaseUrl });
     this.config = config;
@@ -43,7 +44,7 @@ export class WorkbenchDataSource {
    * @param {string} collection Collection identifier.
    * @param {string} id Record identifier.
    * @param {Object} data Record payload.
-   * @param {string|null} version Current record version or SHA.
+   * @param {string|null} version Current record version or provider revision.
    */
   async saveRecord(collection, id, data, version = null) {
     this.assertIdentifier(collection, "collection");
@@ -66,9 +67,9 @@ export class WorkbenchDataSource {
     );
   }
 
-  /** @returns {Promise<Object>} Repository connection state. */
-  async getRepositoryStatus() {
-    return this.request.get("/api/repository/status");
+  /** @returns {Promise<Object>} Active storage provider and connection state. */
+  async getStorageStatus() {
+    return this.request.get("/api/storage/status");
   }
 
   /**
@@ -85,7 +86,7 @@ export class WorkbenchDataSource {
   }
 }
 
-/** @returns {WorkbenchDataSource} Default configured data source. */
-export function createWorkbenchDataSource() {
-  return new WorkbenchDataSource();
+/** @returns {StorageService} Default configured storage service. */
+export function createStorageService(options) {
+  return new StorageService(options);
 }

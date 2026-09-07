@@ -9,14 +9,14 @@ import React, {
 import { appConfig, isBackendConfigured } from "../config/environment";
 import { createAuthService } from "../services/authService";
 import { createRequestClient } from "../services/requestClient";
-import { createWorkbenchDataSource } from "../services/workbenchDataSource";
+import { createStorageService } from "../services/storageService";
 
 const WorkbenchContext = createContext(null);
 
 /**
  * Provide shared backend state and service instances.
  *
- * This context owns only authentication and repository connection state. A
+ * This context owns only authentication and storage connection state. A
  * feature page should keep its own domain data instead of growing one global
  * store for every future workbench module.
  */
@@ -24,52 +24,52 @@ export function WorkbenchProvider({ children }) {
   const [state, setState] = useState({
     status: "idle",
     session: null,
-    repository: null,
+    storage: null,
     error: null,
   });
   const request = useMemo(
     () => createRequestClient({ baseUrl: appConfig.apiBaseUrl }),
     []
   );
-  const dataSource = useMemo(() => createWorkbenchDataSource({ request }), [request]);
+  const storageService = useMemo(() => createStorageService({ request }), [request]);
   const authService = useMemo(
     () => createAuthService({ baseUrl: appConfig.apiBaseUrl }),
     []
   );
 
-  /** Refresh session and repository state independently. */
+  /** Refresh session and storage state independently. */
   const refresh = useCallback(async () => {
     if (!isBackendConfigured()) {
       setState({
         status: "not-configured",
         session: null,
-        repository: null,
+        storage: null,
         error: null,
       });
       return;
     }
 
     setState((current) => ({ ...current, status: "loading", error: null }));
-    const [sessionResult, repositoryResult] = await Promise.allSettled([
-      dataSource.getSession(),
-      dataSource.getRepositoryStatus(),
+    const [sessionResult, storageResult] = await Promise.allSettled([
+      storageService.getSession(),
+      storageService.getStorageStatus(),
     ]);
     const session =
       sessionResult.status === "fulfilled" ? sessionResult.value : null;
-    const repository =
-      repositoryResult.status === "fulfilled" ? repositoryResult.value : null;
+    const storage =
+      storageResult.status === "fulfilled" ? storageResult.value : null;
     const error =
-      sessionResult.status === "rejected" && repositoryResult.status === "rejected"
+      sessionResult.status === "rejected" && storageResult.status === "rejected"
         ? sessionResult.reason
         : null;
 
     setState({
       status: error ? "error" : "ready",
       session,
-      repository,
+      storage,
       error,
     });
-  }, [dataSource]);
+  }, [storageService]);
 
   useEffect(() => {
     refresh();
@@ -80,11 +80,11 @@ export function WorkbenchProvider({ children }) {
       ...state,
       config: appConfig,
       request,
-      dataSource,
+      storageService,
       authService,
       refresh,
     }),
-    [state, request, dataSource, authService, refresh]
+    [state, request, storageService, authService, refresh]
   );
 
   return <WorkbenchContext.Provider value={value}>{children}</WorkbenchContext.Provider>;

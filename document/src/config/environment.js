@@ -13,6 +13,7 @@ export const appConfig = Object.freeze({
   repositoryName: env.VITE_GITHUB_REPOSITORY_NAME || "still8pm.github.io",
   repositoryBranch: env.VITE_GITHUB_REPOSITORY_BRANCH || "main",
   dataRoot: env.VITE_GITHUB_DATA_ROOT || "data",
+  storageProvider: env.VITE_STORAGE_PROVIDER || "github",
 });
 
 /**

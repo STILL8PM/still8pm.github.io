@@ -1,18 +1,19 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import "antd/dist/antd.css";
 import App from "./App";
 import "./index.css";
 
 /**
- * 应用启动入口。
+ * Mount the React application from the Vite entry module.
  *
- * Vite 直接加载此模块并挂载 React 应用，替代 CRA 隐式注入的入口流程。
- * 入口保持单一职责，公共配置、路由和页面逻辑由 App 及其子模块负责。
+ * Routing, shared services and page composition remain outside this bootstrap
+ * module so startup stays deterministic and easy to test.
  */
 const container = document.getElementById("root");
 
 if (!container) {
-  throw new Error("应用挂载节点不存在，无法启动之一的工作台。");
+  throw new Error("The root element is missing. The application cannot start.");
 }
 
 createRoot(container).render(

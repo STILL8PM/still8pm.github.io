@@ -2,9 +2,12 @@
 
 ## 项目定位
 
-这是基于 React 18 与 Vite 的前后台一体工作台前端。GitHub 仓库
-`STILL8PM/still8pm.github.io` 作为数据版本库，GitHub Token 只能由后续
-Serverless 后端保存和使用，不能写入前端环境变量或浏览器存储。
+这是基于 React 18 与 Vite 的前后台一体工作台。当前后台管理界面支持本地
+持久化、完整 CRUD、审计日志和数据导入导出，并预留 GitHub Repository 与
+坚果云 WebDAV 两种远端存储。Token 和应用密码只能由 Serverless 后端保存。
+
+后台的“模块功能”使用模块与功能两级树，入口为 `/#/admin/modules`。
+模块和功能均可独立控制前台显示，模块隐藏时其全部子功能不会出现在前台。
 
 ## 本地启动
 

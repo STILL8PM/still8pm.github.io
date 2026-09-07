@@ -22,6 +22,6 @@
 
 - 前端：React 18 + Vite + React Router 6 + Ant Design 4。
 - 发布：GitHub Pages，构建输出目录为 `document/build/`，发布命令为 `npm run deploy`。
-- 数据：目标仓库为 `STILL8PM/still8pm.github.io`，前端 GitHub 数据源和接口契约已建立。
-- 后台：Serverless 接口尚未部署，GitHub OAuth 和真实读写仍待实现。
+- 数据：支持 GitHub Repository 和坚果云 WebDAV，前端通用存储契约已建立。
+- 后台：Serverless 接口尚未部署，认证和真实存储读写仍待实现。
 - 最近验证：在 `document/` 执行 `npm.cmd run build` 成功。
