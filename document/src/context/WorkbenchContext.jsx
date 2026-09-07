@@ -32,10 +32,7 @@ export function WorkbenchProvider({ children }) {
     []
   );
   const storageService = useMemo(() => createStorageService({ request }), [request]);
-  const authService = useMemo(
-    () => createAuthService({ baseUrl: appConfig.apiBaseUrl }),
-    []
-  );
+  const authService = useMemo(() => createAuthService(), []);
 
   /** Refresh session and storage state independently. */
   const refresh = useCallback(async () => {

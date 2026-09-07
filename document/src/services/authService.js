@@ -1,5 +1,3 @@
-import { appConfig } from "../config/environment";
-
 /** Read the user object from the standard API envelope or a direct session. */
 function getSessionUser(session) {
   return session?.data?.user || session?.user || null;
@@ -21,18 +19,11 @@ export function isAdminSession(session) {
 /**
  * Create the authentication navigation service.
  *
- * GitHub authorization and session cookies are handled by the backend. The
- * browser only follows the login redirect and never receives a GitHub token.
- *
- * @param {Object} options Service options.
- * @param {string} options.baseUrl Serverless API base URL.
+ * Password verification and session cookies are handled by the backend. The
+ * browser submits credentials only for the current request and never persists
+ * a password or password hash.
  */
-export function createAuthService({ baseUrl = appConfig.apiBaseUrl } = {}) {
-  const buildUrl = (path) => {
-    const normalizedBaseUrl = baseUrl.replace(/\/$/, "");
-    return normalizedBaseUrl ? `${normalizedBaseUrl}${path}` : path;
-  };
-
+export function createAuthService() {
   return {
     /** Submit account credentials to the backend-managed session endpoint. */
     async login(request, credentials) {
@@ -42,11 +33,6 @@ export function createAuthService({ baseUrl = appConfig.apiBaseUrl } = {}) {
     /** Create an account without persisting its password in browser storage. */
     async register(request, account) {
       return request.post("/api/auth/register", account);
-    },
-
-    /** Start the backend-managed GitHub login flow. */
-    startLogin() {
-      window.location.assign(buildUrl("/api/auth/github?mode=login"));
     },
 
     /** @param {Object} request Shared request client. */
