@@ -9,6 +9,7 @@
 /coverage
 
 # production
+# 构建产物提交才能被部署
 # /build
 
 # misc

@@ -29,6 +29,16 @@ npm run preview
 npm run deploy
 ```
 
+一键构建、提交源码、推送当前分支并发布 GitHub Pages：
+
+```bash
+npm run release -- "feat: update workbench"
+```
+
+提交说明可以省略，此时脚本会自动生成带时间的发布提交。Windows PowerShell
+可以将 `npm` 替换为 `npm.cmd`。脚本会提交仓库中的全部待提交改动，执行前应先
+使用 `git status` 检查改动范围。
+
 Vite 使用相对资源路径，路由使用 Hash 模式，因此构建结果可以继续发布到
 当前仓库的 `gh-pages` 分支，刷新工作台子页面不会产生静态路由 404。
 

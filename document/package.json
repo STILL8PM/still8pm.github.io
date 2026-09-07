@@ -18,7 +18,9 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d build"
+    "deploy": "npm run build && gh-pages -d build",
+    "deploy:pages": "gh-pages -d build",
+    "release": "node scripts/release.js"
   },
   "browserslist": {
     "production": [
