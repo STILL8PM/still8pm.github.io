@@ -40,13 +40,14 @@ export function WorkbenchProvider({ children }) {
   /** Refresh session and storage state independently. */
   const refresh = useCallback(async () => {
     if (!isBackendConfigured()) {
-      setState({
+      const nextState = {
         status: "not-configured",
         session: null,
         storage: null,
         error: null,
-      });
-      return;
+      };
+      setState(nextState);
+      return nextState;
     }
 
     setState((current) => ({ ...current, status: "loading", error: null }));
@@ -63,12 +64,14 @@ export function WorkbenchProvider({ children }) {
         ? sessionResult.reason
         : null;
 
-    setState({
+    const nextState = {
       status: error ? "error" : "ready",
       session,
       storage,
       error,
-    });
+    };
+    setState(nextState);
+    return nextState;
   }, [storageService]);
 
   useEffect(() => {
